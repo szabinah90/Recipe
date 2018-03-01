@@ -26,7 +26,7 @@ recipes.get('/:id/new', (req, res) => {
 */
 
 // create recipe
-recipes.post('/create', (req, res) => {
+recipes.post('/', (req, res) => {
   let createdRecipe = recipesModel.create(req.query.recipename);
   res.json(createdRecipe);
 });
@@ -41,7 +41,7 @@ recipes.get('/:id/edit', (req, res) => {
 */
 
 // update recipe
-recipes.put('/:id/update', (req, res) => {
+recipes.put('/:id', (req, res) => {
   let id = parseInt(req.params.id);
   let newName = req.query.newname;
   let updatedRecipe = recipesModel.update(id, newName);
@@ -49,7 +49,7 @@ recipes.put('/:id/update', (req, res) => {
 });
 
 // delete recipe
-recipes.delete('/:id/delete', (req, res) => {
+recipes.delete('/:id', (req, res) => {
   let id = parseInt(req.params.id);
   let deletedRecipe = recipesModel.destroy(id);
   res.json(deletedRecipe);

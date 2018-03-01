@@ -9,7 +9,7 @@ const logger = (req, res, next) => {
   next();
 };
 
-index.use(logger);
+// index.use(logger);
 index.use('/recipes', recipes);
 
 // LISTENER

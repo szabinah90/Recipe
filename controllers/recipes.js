@@ -23,8 +23,8 @@ recipes.get('/new', (req, res) => {
 // show recipe
 recipes.get('/:id', (req, res) => {
   let id = parseInt(req.params.id);
-  let recipe = recipesModel.get(id);
-  res.json(recipe);
+  res.locals.indRecipe = recipesModel.get(id);
+  res.render('recipes/show');
 });
 
 // create recipe

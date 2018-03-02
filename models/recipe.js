@@ -1,5 +1,11 @@
-let recipesDB = [];
-let recipeCounter = 0;
+let recipesDB = [
+  { id: 0, recipename: 'Palacsinta' },
+  { id: 1, recipename: 'Kakaóscsiga' },
+  { id: 2, recipename: 'Húsleves' },
+  { id: 3, recipename: 'Curry' }
+];
+
+let recipeCounter = 4;
 
 const getAll = () => {
   return recipesDB;

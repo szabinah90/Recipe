@@ -6,7 +6,8 @@ const recipesModel = require('../models/recipe');
 // index
 recipes.get('/', (req, res) => {
   let recipesDatabase = recipesModel.getAll();
-  res.json(recipesDatabase);
+  res.locals.recipesDatabase = recipesDatabase; // beletöltjük a recipesDatabase-t a res.locals objektumba
+  res.render('recipes/index');                  // beletsszük az index.hb-be: {{recipesDatabase}}
 });
 
 // show recipe

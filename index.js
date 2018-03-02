@@ -8,15 +8,7 @@ const handlebarsOptions = { defaultLayout: 'main' };
 const handlebarsConfig = expressHandlebars(handlebarsOptions);
 index.engine('handlebars', handlebarsConfig);
 index.set('view engine', 'handlebars');
-// index.engine('handlebars', expressHandlebars({defaultLayout: 'main'})); ugyanaz, mint a fentebbi 4 sor, csak szétszedtük az érthetőség kedvéért. 
-
-index.get('/pelda', (req, res) => {
-  res.render('geza');
-});
-
-index.get('/juli', (req, res) => {
-  res.render('valami');
-});
+// index.engine('handlebars', expressHandlebars({defaultLayout: 'main'})); ugyanaz, mint a fentebbi 4 sor, csak szétszedtük az érthetőség kedvéért.
 
 // logger
 const logger = (req, res, next) => {

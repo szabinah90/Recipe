@@ -6,8 +6,18 @@ const recipesModel = require('../models/recipe');
 // index
 recipes.get('/', (req, res) => {
   let recipesDatabase = recipesModel.getAll();
-  res.locals.recipesDatabase = recipesDatabase; // beletöltjük a recipesDatabase-t a res.locals objektumba
-  res.render('recipes/index');                  // beletsszük az index.hb-be: {{recipesDatabase}}
+  res.locals.recipesDatabase = recipesDatabase;
+  res.render('recipes/index');
+});
+/* index:
+beletöltjük a recipesDatabase-t a res.locals objektumba
+a recipes (ugyanaz a neve, mint a kontrollernek!) mappában lévő index.hb-t rendereljük,
+ezért bele kell tenni a recipesDatabaset: {{recipesDatabase}}
+*/
+
+// get new recipe form
+recipes.get('/new', (req, res) => {
+  res.render('recipes/new');
 });
 
 // show recipe
@@ -17,19 +27,10 @@ recipes.get('/:id', (req, res) => {
   res.json(recipe);
 });
 
-/*
-// get new recipe form
-recipes.get('/:id/new', (req, res) => {
-  let id = parseInt(req.params.id);
-  let tempResponse = {id: id, action: 'new', success: true};
-  res.json(tempResponse);
-});
-*/
-
 // create recipe
 recipes.post('/', (req, res) => {
-  let createdRecipe = recipesModel.create(req.query.recipename);
-  res.json(createdRecipe);
+  recipesModel.create({recipename: req.body.recipename});
+  res.redirect('/recipes');
 });
 
 /*

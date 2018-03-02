@@ -1,4 +1,16 @@
 <h2>List</h2>
-{{# each recipesDatabase}} {{!-- {{ez getAll()-lal lekért lista (áthoztuk a kontrollerből)}} --}}
-
-{{/each}}
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Recipename</th>
+  </tr>
+  {{#each recipesDatabase}} 
+  {{!-- {{a getAll()-lal lekért lista (áthoztuk a kontrollerből)}} --}}
+  {{!-- {{pörgeti a tömböt, és ha a tömbben objektumok vannak,
+  akkor elérhető az object propertije}} --}}
+  <tr>
+    <td>{{id}}</td>
+    <td>{{recipename}}</td>
+  </tr>
+  {{/each}}
+</table>

@@ -3,6 +3,9 @@ const index = express();
 const expressHandlebars = require('express-handlebars');
 const recipes = require('./controllers/recipes');
 
+const path = require('path');
+index.use(express.static(path.join(__dirname, '/public')));
+
 // handlebars
 const handlebarsOptions = { defaultLayout: 'main' };
 const handlebarsConfig = expressHandlebars(handlebarsOptions);

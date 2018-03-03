@@ -3,6 +3,11 @@ const recipes = express();
 
 const recipesModel = require('../models/recipe');
 
+recipes.get('/css/stylesheet.css', (req, res) => {
+  res.send('css/stylesheet.css');
+  res.end();
+});
+
 // index
 recipes.get('/', (req, res) => {
   let recipesDatabase = recipesModel.getAll();
@@ -29,7 +34,7 @@ recipes.get('/:id', (req, res) => {
 
 // create recipe
 recipes.post('/', (req, res) => {
-  recipesModel.create({recipename: req.body.recipename});
+  recipesModel.create({ recipename: req.body.recipename });
   res.redirect('/recipes');
 });
 

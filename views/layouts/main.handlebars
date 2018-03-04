@@ -5,23 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+  <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap-grid.min.css" />
   <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
   <title>Recipes</title>
 </head>
 
 <body>
-  <h1 class="title">Recipes</h1>
-  <ul>
-    <li>
-      <a href='/recipes'>List</a>
-    </li>
-    <li>
-      <a href='/recipes/new'>New Recipe</a>
-    </li>
-  </ul>
+  <div class="jumbotron">
+    <h1 class="display-4">Recipes</h1>
+    <p class="lead">This is a simple recipe management application, solely for practicing purposes.</p>
+    <hr class="my-4">
+    <p style="color:rgba(0, 0, 0, 0.753)">You can add, update, delete, view and list all your recipes here.</p>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color:white">Recipes</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href='/recipes'>List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/recipes/new'>New Recipe</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
   {{{body}}} {{!-- {{content; a címsorban meghívott route-hoz tartozó handlebar-fájl tartalmát rendereli be.}} --}}
-  <p>Copyright 2018, Flow Academy &copy;</p>
+  <div class="footer-container">
+    <div class="footer">
+      <div class="name">Copyright 2018, Flow Academy &copy;</div>
+      <div class="date">All rights reserved.</div>
+    </div>
+  </div>
 </body>
 
 </html>

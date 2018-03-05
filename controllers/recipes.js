@@ -38,28 +38,26 @@ recipes.post('/', (req, res) => {
   res.redirect('/recipes');
 });
 
-/*
 // get edit form
 recipes.get('/:id/edit', (req, res) => {
   let id = parseInt(req.params.id);
-  let tempResponse = {id: id, action: 'edit', success: true};
-  res.json(tempResponse);
+  res.locals.indRecipe = recipesModel.get(id);
+  res.render('recipes/edit');
 });
-*/
 
 // update recipe
 recipes.put('/:id', (req, res) => {
   let id = parseInt(req.params.id);
-  let newName = req.query.newname;
-  let updatedRecipe = recipesModel.update(id, newName);
-  res.json(updatedRecipe);
+  let newName = req.body.recipename;
+  recipesModel.update(id, newName);
+  res.redirect('/recipes');
 });
 
 // delete recipe
 recipes.delete('/:id', (req, res) => {
   let id = parseInt(req.params.id);
-  let deletedRecipe = recipesModel.destroy(id);
-  res.json(deletedRecipe);
+  recipesModel.destroy(id);
+  res.redirect('/recipes');
 });
 
 module.exports = recipes;

@@ -10,7 +10,9 @@
 </head>
 
 <body>
-  <h2 style="color:#212529ec"><strong>Your List</strong><h2>
+  <h2 style="color:#212529ec">
+    <strong>Your List</strong>
+    <h2>
       <table class="darkTable">
         <thead>
           <tr>
@@ -24,6 +26,14 @@
             <td>{{id}}</td>
             <td>
               <a href='/recipes/{{id}}'>{{recipename}}</a>
+            </td>
+            <td>
+              <a href='/recipes/{{id}}/edit'>Edit</a>
+            </td>
+            <td>
+              <form method="POST" action="/recipes/{{id}}?_method=DELETE">
+                <input type="submit" value="Delete">
+              </form>
             </td>
           </tr>
           {{/each}}

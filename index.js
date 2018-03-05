@@ -2,9 +2,11 @@ const express = require('express');
 const index = express();
 const expressHandlebars = require('express-handlebars');
 const recipes = require('./controllers/recipes');
+var methodOverride = require('method-override');
 
 const path = require('path');
 index.use(express.static(path.join(__dirname, '/views')));
+index.use(methodOverride('_method'));
 
 // handlebars
 const handlebarsOptions = { defaultLayout: 'main' };

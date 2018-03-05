@@ -8,6 +8,7 @@ h2 {
 table.darkTable {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   border: 2px solid  #212529ec;
+  border-radius: 15px;
   background-color: #808f9eec;
   margin: auto;
   width: 50%;
@@ -18,6 +19,7 @@ table.darkTable {
 }
 table.darkTable td, table.darkTable th {
   border: 1px solid  #212529ec;
+  border-radius: 25px;
   padding: 3px 2px;
   vertical-align: middle;
 }

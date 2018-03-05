@@ -4,8 +4,7 @@ const expressHandlebars = require('express-handlebars');
 const recipes = require('./controllers/recipes');
 var methodOverride = require('method-override');
 
-const path = require('path');
-index.use(express.static(path.join(__dirname, '/views')));
+index.use(express.static('public')); // views/css
 index.use(methodOverride('_method'));
 
 // handlebars

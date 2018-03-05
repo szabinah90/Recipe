@@ -1,6 +1,17 @@
-<h2>New Recipe</h2>
+<link rel="stylesheet" type="text/css" href="/css/new.css" />
+<h2 style="color:#212529ec">
+  <strong>New Recipe</strong>
+</h2>
 <form method="POST" action="/recipes">
-  <input type="text" name="recipename" />
-  <textarea name="description"></textarea>
-  <input type="submit" value="Create" />
+  <div class="field-container">
+    <div class="grouped">
+      <label>Recipename:</label>
+      <input type="text" name="recipename" />
+      <label>Description:</label>
+      <textarea name="description"></textarea>
+    </div>
+    <div class="button">
+      <input type="submit" value="Create" />
+    </div>
+  </div>
 </form>

@@ -2,7 +2,7 @@ const express = require('express');
 const index = express();
 const expressHandlebars = require('express-handlebars');
 const recipes = require('./controllers/recipes');
-var methodOverride = require('method-override');
+const methodOverride = require('method-override');
 
 index.use(express.static('public')); // views/css
 index.use(methodOverride('_method'));
@@ -14,7 +14,8 @@ index.engine('handlebars', handlebarsConfig);
 index.set('view engine', 'handlebars');
 // index.engine('handlebars', expressHandlebars({defaultLayout: 'main'})); ugyanaz, mint a fentebbi 4 sor, csak szétszedtük az érthetőség kedvéért.
 
-let bodyParser = require('body-parser');
+// body parser
+const bodyParser = require('body-parser');
 index.use(bodyParser.json());
 index.use(bodyParser.urlencoded({ extended: false }));
 

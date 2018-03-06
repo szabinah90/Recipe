@@ -50,11 +50,14 @@ textarea {
   align-self: center;
   box-sizing: border-box;
   resize: none;
+  margin-right: 2rem;
 }
+
 .labelnames {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+
 
 .textfields {
   display: flex;

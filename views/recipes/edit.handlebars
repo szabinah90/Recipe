@@ -2,7 +2,7 @@
 <h2 style="color:#212529ec">
   <strong>Edit Recipe</strong>
 </h2>
-<form method="POST" action="/recipes/{{indRecipe.id}}?_method=PUT">
+<form method="POST" action="/recipes/{{updRecipe.id}}?_method=PUT">
   <div class="field-container">
     <div class="grouped">
       <div class="labelnames">
@@ -10,8 +10,8 @@
         <label>Description:</label>
       </div>
       <div class="textfields">
-        <input type="text" name="recipename" value="{{indRecipe.recipename}}"/>
-        <textarea type="text" name="description" placeholder="Enter a Description">{{indRecipe.description}}</textarea>
+        <input type="text" name="recipename" value="{{updRecipe.recipename}}"/>
+        <textarea type="text" name="description" placeholder="Enter a Description">{{updRecipe.description}}</textarea>
       </div>
     </div>
     <div class="button">

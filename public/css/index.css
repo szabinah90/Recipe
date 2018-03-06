@@ -9,7 +9,7 @@ table.darkTable {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   border: 2px solid  #212529ec;
   border-radius: 15px;
-  background-color: #808f9eec;
+  background-color: #8f9b84ec;
   margin: auto;
   width: 50%;
   height: 50%;
@@ -28,7 +28,7 @@ table.darkTable tbody td {
   color: #E6E6E6;
 }
 table.darkTable tr:nth-child(even) {
-  background: #212529ec; /*#888888*/
+  background: #212529ec;
 }
 table.darkTable thead {
   background:  #212529ec;
@@ -66,14 +66,15 @@ a:hover {
 
 input[type=submit] {
   padding: 5px 10px;
-  background-color: #28a745;
+  background-color: #E6E6E6;
   border-style: solid;
-  border-color: #28a745;
+  border-color: #E6E6E6;
   color: #212529ec;
   border-radius: 5px;
+  border-width: 1px;
 }
 
 input[type=submit]:hover {
   background-color: #212529ec;
-  color: #28a745;
+  color: #E6E6E6;
 }

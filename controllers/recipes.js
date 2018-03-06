@@ -23,7 +23,7 @@ recipes.get('/new', (req, res) => {
 // show recipe
 recipes.get('/:id', (req, res) => {
   let id = parseInt(req.params.id);
-  res.locals.indRecipe = recipesModel.get(id);
+  res.locals.showRecipe = recipesModel.get(id);
   res.render('recipes/show');
 });
 
@@ -36,7 +36,7 @@ recipes.post('/', (req, res) => {
 // get edit form
 recipes.get('/:id/edit', (req, res) => {
   let id = parseInt(req.params.id);
-  res.locals.indRecipe = recipesModel.get(id);
+  res.locals.updRecipe = recipesModel.get(id);
   res.render('recipes/edit');
 });
 
@@ -55,5 +55,15 @@ recipes.delete('/:id', (req, res) => {
   recipesModel.destroy(id);
   res.redirect('/recipes');
 });
+
+/*
+// search
+recipes.post('/:recipename', (req, res) => {
+  let id = recipesModel.search(req.query.recipename);
+  console.log(id);
+  res.locals.indRecipe = recipesModel.get(id);
+  res.render('recipes/search');
+});
+*/
 
 module.exports = recipes;

@@ -42,10 +42,23 @@ const destroy = (id) => {
   return recipeToDelete;
 };
 
+/*
+const search = (searchInput) => {
+  console.log('valami');
+  if (recipesDB.includes(searchInput)) {
+    console.log('ez jo');
+    return recipesDB.indexOf(searchInput);
+  } else {
+    console.log('not found');
+  }
+};
+*/
+
 module.exports = {
   getAll: getAll,
   get: get,
   create: create,
   update: update,
   destroy: destroy
+  // search: search
 };

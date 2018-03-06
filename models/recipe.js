@@ -1,8 +1,8 @@
 let recipesDB = [
-  { id: 0, recipename: 'Palacsinta' },
-  { id: 1, recipename: 'Kakaóscsiga' },
-  { id: 2, recipename: 'Húsleves' },
-  { id: 3, recipename: 'Csirke curry' }
+  { id: 0, recipename: 'Palacsinta', description: 'nagyon finom' },
+  { id: 1, recipename: 'Kakaóscsiga', description: 'hmmmm' },
+  { id: 2, recipename: 'Húsleves', description: 'anyám féle' },
+  { id: 3, recipename: 'Csirke curry', description: 'taj mahal' }
 ];
 
 let recipeCounter = 4;
@@ -20,16 +20,18 @@ const get = (id) => {
 const create = (recipeObj) => {
   let newRecipe = {
     id: recipeCounter,
-    recipename: recipeObj.recipename
+    recipename: recipeObj.recipename,
+    description: recipeObj.description
   };
   recipesDB.push(newRecipe);
   recipeCounter++;
   return newRecipe;
 };
 
-const update = (id, newname) => {
+const update = (id, newname, newdescr) => {
   let recipeToUpdate = get(id);
   recipeToUpdate.recipename = newname;
+  recipeToUpdate.description = newdescr;
   return recipeToUpdate;
 };
 

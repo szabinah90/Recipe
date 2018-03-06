@@ -29,7 +29,7 @@ recipes.get('/:id', (req, res) => {
 
 // create recipe
 recipes.post('/', (req, res) => {
-  recipesModel.create({ recipename: req.body.recipename });
+  recipesModel.create({ recipename: req.body.recipename, description: req.body.description });
   res.redirect('/recipes');
 });
 
@@ -44,7 +44,8 @@ recipes.get('/:id/edit', (req, res) => {
 recipes.put('/:id', (req, res) => {
   let id = parseInt(req.params.id);
   let newName = req.body.recipename;
-  recipesModel.update(id, newName);
+  let newDescr = req.body.description;
+  recipesModel.update(id, newName, newDescr);
   res.redirect('/recipes');
 });
 

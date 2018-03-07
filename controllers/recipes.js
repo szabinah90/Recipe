@@ -5,7 +5,13 @@ const recipesModel = require('../models/recipe');
 
 // index
 recipes.get('/', (req, res) => {
-  let recipesDatabase = recipesModel.getAll();
+  let recipesDatabase;
+  if (req.query.q) {
+    res.locals.search = req.query.q;
+    recipesDatabase = recipesModel.search(req.query.q);
+  } else {
+    recipesDatabase = recipesModel.getAll();
+  }
   res.locals.recipesDatabase = recipesDatabase;
   res.render('recipes/index');
 });
@@ -55,15 +61,5 @@ recipes.delete('/:id', (req, res) => {
   recipesModel.destroy(id);
   res.redirect('/recipes');
 });
-
-/*
-// search
-recipes.post('/:recipename', (req, res) => {
-  let id = recipesModel.search(req.query.recipename);
-  console.log(id);
-  res.locals.indRecipe = recipesModel.get(id);
-  res.render('recipes/search');
-});
-*/
 
 module.exports = recipes;

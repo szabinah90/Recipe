@@ -11,7 +11,13 @@
 
 <body>
   <h2 style="color:#212529ec">
-    <strong>Your List</strong>
+     <strong>
+    {{#if search}}
+    Search: {{search}}
+    {{else}}
+    Your List
+    {{/if}}
+    </strong>
     <h2>
       <table class="darkTable">
         <thead>

@@ -1,9 +1,65 @@
 const express = require('express');
 const recipes = express();
 
-const recipesModel = require('../models/recipe');
+const models = require('../models');
 
 // index
+recipes.get('/', (req, res) => {
+  models.recipe.findAll().then(recipes => {
+    res.locals.recipesDatabase = recipes;
+    res.render('recipes/index');
+  });
+});
+
+// get new recipe form
+recipes.get('/new', (req, res) => {
+  res.render('recipes/new');
+});
+
+// show recipe
+recipes.get('/:id', (req, res) => {
+  models.recipe.findById(req.params.id).then(recipe => {
+    res.locals.recipe = recipe;
+    res.render('recipes/show');
+  });
+});
+
+// create recipe
+recipes.post('/', (req, res) => {
+  models.recipe.create({name: req.body.name, description: req.body.description}).then(recipe => {
+    res.redirect('/recipes');
+  });
+});
+
+// get edit form
+recipes.get('/:id/edit', (req, res) => {
+  models.recipe.findById(req.params.id).then(recipe => {
+    res.locals.recipe = recipe;
+    res.render('recipes/edit');
+  });
+});
+
+// update recipe
+recipes.put('/:id', (req, res) => {
+  models.recipe.update({name: req.body.name, description: req.body.description}, {where: {id: req.params.id}}).then(recipe => {
+    res.redirect('/recipes');
+  });
+});
+
+// delete recipe
+recipes.delete('/:id', (req, res) => {
+  models.recipe.findById(req.params.id).then(recipe => {
+    recipe.destroy().then(() => {
+      res.redirect('/recipes');
+    });
+  });
+});
+
+/* index & search:
+beletöltjük a recipesDatabase-t a res.locals objektumba
+a recipes (ugyanaz a neve, mint a kontrollernek!) mappában lévő index.hb-t rendereljük,
+ezért bele kell tenni a recipesDatabaset: {{recipesDatabase}}
+
 recipes.get('/', (req, res) => {
   let recipesDatabase;
   if (req.query.q) {
@@ -15,51 +71,6 @@ recipes.get('/', (req, res) => {
   res.locals.recipesDatabase = recipesDatabase;
   res.render('recipes/index');
 });
-/* index:
-beletöltjük a recipesDatabase-t a res.locals objektumba
-a recipes (ugyanaz a neve, mint a kontrollernek!) mappában lévő index.hb-t rendereljük,
-ezért bele kell tenni a recipesDatabaset: {{recipesDatabase}}
 */
-
-// get new recipe form
-recipes.get('/new', (req, res) => {
-  res.render('recipes/new');
-});
-
-// show recipe
-recipes.get('/:id', (req, res) => {
-  let id = parseInt(req.params.id);
-  res.locals.showRecipe = recipesModel.get(id);
-  res.render('recipes/show');
-});
-
-// create recipe
-recipes.post('/', (req, res) => {
-  recipesModel.create({ recipename: req.body.recipename, description: req.body.description });
-  res.redirect('/recipes');
-});
-
-// get edit form
-recipes.get('/:id/edit', (req, res) => {
-  let id = parseInt(req.params.id);
-  res.locals.updRecipe = recipesModel.get(id);
-  res.render('recipes/edit');
-});
-
-// update recipe
-recipes.put('/:id', (req, res) => {
-  let id = parseInt(req.params.id);
-  let newName = req.body.recipename;
-  let newDescr = req.body.description;
-  recipesModel.update(id, newName, newDescr);
-  res.redirect('/recipes');
-});
-
-// delete recipe
-recipes.delete('/:id', (req, res) => {
-  let id = parseInt(req.params.id);
-  recipesModel.destroy(id);
-  res.redirect('/recipes');
-});
 
 module.exports = recipes;
